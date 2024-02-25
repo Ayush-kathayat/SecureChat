@@ -1,0 +1,113 @@
+/*import fonts*/
+@import url(https://fonts.bunny.net/css?family=lato:300|open-sans:300|playfair-display:400|poppins:200|roboto:100);
+
+/* CSS Reset */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+/* Root CSS Variables */
+
+:root {
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+
+  /* Color Themes */
+
+  /* Theme-1 */
+  /* --text: hsl(240, 60%, 95%);
+  --background: hsl(236, 60%, 5%);
+  --primary: hsl(328, 59%, 62%);
+  --secondary: hsl(58, 61%, 10%);
+  --accent: hsl(148, 59%, 50%); */
+
+  /* Theme-2 */
+
+  /* --text: hsl(160, 60%, 98%);
+  --background: hsl(160, 60%, 7%);
+  --primary: hsl(160, 59%, 49%);
+  --secondary: hsl(160, 58%, 11%);
+  --accent: hsl(160, 59%, 51%); */
+
+  /* Theme-3 */
+
+  --text: hsl(270, 77%, 95%);
+  --background: #171617;
+  --primary: #444241;
+  --secondary: #262527;
+  --accent: #FFED00;
+  background-color: var(--background);
+  color: var(--text);
+
+  /* FONTS */
+
+  --primary-font: "Roboto", sans-serif; /* --primary-font represents the main font used throughout the project. This could be used for headers, subheaders, and primary body text. */
+  --secondary-font: "Lato", sans-serif; /*--secondary-font could represent a secondary font used for less important text or for emphasizing certain sections of the content.*/
+  --form-font: "Open Sans", sans-serif; /*--form-font is intended for form fields and buttons.*/
+  --cta-font: "Poppins", sans-serif; /* --cta-font stands for Call To Action font, typically used for buttons that lead to important actions.*/
+  --subtitle-font: "Playfair Display", serif; /*--subtitle-font is used for subtitles and secondary headings.*/
+
+  --font-size-em: 1.2em;
+  --font-size-xdinormous: 5.854rem;
+  --font-size-dinormous: 4.854rem;
+  --font-size-xmammoth: 3.052rem;
+  --font-size-mammoth: 2.488rem;
+  --font-size-xhuge: 2.074rem;
+  --font-size-huge: 1.728rem;
+  --font-size-xlarge: 1.44rem;
+  --font-size-large: 1.2rem;
+  --font-size-medium: 1.1rem;
+  --font-size-normal: 1rem;
+  --font-size-small: 0.833rem;
+  --font-size-tiny: 0.579rem;
+
+  /* weights */
+  --font-weight-bolder: 900;
+  --font-weight-bold: 600;
+  --font-weight-semibold: 500;
+  --font-weight-normal: 400;
+  --font-weight-light: 300;
+  --font-weight-thin: 200;
+}
+
+/* smooth scroll css */
+
+html.lenis {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+::-webkit-scrollbar {
+  display: none;
+}
+
+
+/* Hide scrollbar for IE, Edge and Firefox */
+body {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+
+}
