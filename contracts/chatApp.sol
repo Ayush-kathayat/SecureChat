@@ -94,4 +94,13 @@ contract ChatApp{
     users[me].friends.push(newFriend);
   }
 
+
+  // get the friend
+
+  function getMyFriendList() external view returns(friend[] memory){
+    require(checkUserExist(msg.sender), "Create an account first");
+    return users[msg.sender].friends;
+  }
+
+  
 }
