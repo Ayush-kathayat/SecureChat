@@ -1,4 +1,4 @@
-import './users.css'
+import './users.css';
 
 const Users = () => {
   

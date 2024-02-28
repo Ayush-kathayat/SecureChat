@@ -1,4 +1,4 @@
-import './faqs.css'
+import './faqs.css';
 
 const Faqs = () => {
   

@@ -1,4 +1,4 @@
-import './tou.css'
+import './tou.css';
 
 const Terms = () => {
   

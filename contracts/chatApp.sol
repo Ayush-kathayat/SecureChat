@@ -102,5 +102,14 @@ contract ChatApp{
     return users[msg.sender].friends;
   }
 
+  // get the chat
+
+  function getChat(address friend_key) external view returns(message[] memory){
+    require(checkUserExist(msg.sender), "Create an account first");
+    require(checkUserExist(friend_key), "User is not registered");
+    bytes32 chatId = keccak256(abi.encodePacked(msg.sender, friend_key));
+    return messages[chatId];
+  }
   
+
 }
