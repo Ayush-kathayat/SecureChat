@@ -104,12 +104,24 @@ contract ChatApp{
 
   // get the chat
 
-  function getChat(address friend_key) external view returns(message[] memory){
-    require(checkUserExist(msg.sender), "Create an account first");
-    require(checkUserExist(friend_key), "User is not registered");
-    bytes32 chatId = keccak256(abi.encodePacked(msg.sender, friend_key));
-    return messages[chatId];
+  function _getChat(address pubkey1 , address pubkey2) internal pure returns(bytes32){
+    if(pubkey1 < pubkey2){
+      return keccak256(abi.encodePacked(pubkey1, pubkey2));
+    } else return keccak256(abi.encodePacked(pubkey2, pubkey1));
   }
-  
+
+
+  // send message
+  function sendMessage(address receiver, string calldata _msg) external{
+    require(checkUserExist(msg.sender), "Create an account first");
+    require(checkUserExist(receiver), "User is not registered");
+    require(_checkAlreadyFriends(msg.sender, receiver), "You are not friends with this user");
+    require(msg.sender != receiver, "Users cannot send message to themselves");
+    require(bytes(_msg).length > 0, "Message cannot be empty");
+
+    bytes32 chatId = _getChat(msg.sender, receiver);
+    message memory newMessage = message(_msg, msg.sender, block.timestamp);
+    messages[chatId].push(newMessage);
+  }
 
 }
