@@ -24,6 +24,15 @@ contract ChatApp{
     uint256 timestamp;
   }
 
+  struct AllUserStruct{
+    string name;
+    address accountAddress;
+  }
+
+  AllUserStruct[] getAllUserStruct; 
+
+
+
   // mapping of user address to user
 
   mapping(address => user) public users;
@@ -44,6 +53,8 @@ contract ChatApp{
     require(!checkUserExist(msg.sender), "User already exist");
     require(bytes(_name).length > 0, "username cannot be empty");
     users[msg.sender].name = _name;
+
+    getAllUserStruct.push(AllUserStruct(_name, msg.sender));
   }
 
   //get username
@@ -124,7 +135,7 @@ contract ChatApp{
     messages[chatId].push(newMessage);
   }
 
-  //read message
+  //read messages
 
   function readMessage(address friend_key) external view returns(message[] memory){
     require(checkUserExist(msg.sender), "Create an account first");
@@ -133,5 +144,12 @@ contract ChatApp{
     bytes32 chatId = _getChat(msg.sender, friend_key);
     return messages[chatId];
   } 
+
+
+  // get all user who are using our web chat app
+
+  function getAllAppUser() public view returns(AllUserStruct[] memory){
+    return getAllUserStruct;
+  }
 
 }
