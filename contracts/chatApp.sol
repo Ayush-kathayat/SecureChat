@@ -124,4 +124,14 @@ contract ChatApp{
     messages[chatId].push(newMessage);
   }
 
+  //read message
+
+  function readMessage(address friend_key) external view returns(message[] memory){
+    require(checkUserExist(msg.sender), "Create an account first");
+    require(checkUserExist(friend_key), "User is not registered");
+    require(_checkAlreadyFriends(msg.sender, friend_key), "You are not friends with this user");
+    bytes32 chatId = _getChat(msg.sender, friend_key);
+    return messages[chatId];
+  } 
+
 }
