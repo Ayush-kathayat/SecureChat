@@ -24,6 +24,15 @@ contract ChatApp{
     uint256 timestamp;
   }
 
+  struct AllUserStruct{
+    string name;
+    address accountAddress;
+  }
+
+  AllUserStruct[] getAllUserStruct; 
+
+
+
   // mapping of user address to user
 
   mapping(address => user) public users;
@@ -44,6 +53,8 @@ contract ChatApp{
     require(!checkUserExist(msg.sender), "User already exist");
     require(bytes(_name).length > 0, "username cannot be empty");
     users[msg.sender].name = _name;
+
+    getAllUserStruct.push(AllUserStruct(_name, msg.sender));
   }
 
   //get username
@@ -104,12 +115,41 @@ contract ChatApp{
 
   // get the chat
 
-  function getChat(address friend_key) external view returns(message[] memory){
+  function _getChat(address pubkey1 , address pubkey2) internal pure returns(bytes32){
+    if(pubkey1 < pubkey2){
+      return keccak256(abi.encodePacked(pubkey1, pubkey2));
+    } else return keccak256(abi.encodePacked(pubkey2, pubkey1));
+  }
+
+
+  // send message
+  function sendMessage(address receiver, string calldata _msg) external{
+    require(checkUserExist(msg.sender), "Create an account first");
+    require(checkUserExist(receiver), "User is not registered");
+    require(_checkAlreadyFriends(msg.sender, receiver), "You are not friends with this user");
+    require(msg.sender != receiver, "Users cannot send message to themselves");
+    require(bytes(_msg).length > 0, "Message cannot be empty");
+
+    bytes32 chatId = _getChat(msg.sender, receiver);
+    message memory newMessage = message(_msg, msg.sender, block.timestamp);
+    messages[chatId].push(newMessage);
+  }
+
+  //read messages
+
+  function readMessage(address friend_key) external view returns(message[] memory){
     require(checkUserExist(msg.sender), "Create an account first");
     require(checkUserExist(friend_key), "User is not registered");
-    bytes32 chatId = keccak256(abi.encodePacked(msg.sender, friend_key));
+    require(_checkAlreadyFriends(msg.sender, friend_key), "You are not friends with this user");
+    bytes32 chatId = _getChat(msg.sender, friend_key);
     return messages[chatId];
+  } 
+
+
+  // get all user who are using our web chat app
+
+  function getAllAppUser() public view returns(AllUserStruct[] memory){
+    return getAllUserStruct;
   }
-  
 
 }
