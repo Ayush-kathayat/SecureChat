@@ -1,11 +1,11 @@
-import './users.css';
+import './users.css'
 
 const Users = () => {
   
 
   return (
     <>
-      
+      <h1>users</h1>
     </>
   )
 }

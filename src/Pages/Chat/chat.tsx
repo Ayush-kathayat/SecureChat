@@ -1,11 +1,11 @@
-import './chat.css';
+import './chat.css'
 
 const Chat = () => {
   
 
   return (
     <>
-      
+      <h1>chat</h1>
     </>
   )
 }
