@@ -1,5 +1,5 @@
 import './users.css';
-import Navbar from '../../Compenents/nav';
+import Navbar from '../../components/nav';
 
 const Users = () => {
   
