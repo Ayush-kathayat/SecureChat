@@ -1,11 +1,13 @@
-import './users.css'
+import './users.css';
+import Navbar from '../../Compenents/nav';
 
 const Users = () => {
   
 
   return (
     <>
-      <h1>users</h1>
+    <Navbar />
+    <h1>users</h1>
     </>
   )
 }
