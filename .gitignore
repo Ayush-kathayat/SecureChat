@@ -37,3 +37,8 @@ node_modules
 # solidity-coverage files
 /coverage
 /coverage.json
+
+
+# presonal things which should not be in the github 
+
+todo.md
