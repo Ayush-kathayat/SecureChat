@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
-import Landing from "./Pages/Landing/landing.tsx";
-import Users from "./Pages/User/users.tsx";
+import Landing from "./Pages/landing/landing.tsx";
+import Users from "./Pages/user/users.tsx";
 import Chat from "./Pages/Chat/chat.tsx";
 
 import Setting from "./Pages/Setting/setting.tsx";
