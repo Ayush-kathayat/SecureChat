@@ -16,34 +16,34 @@ const Nav = () => {
         <ul className="links">
           <li className="links__item-wrapper">
             <div className="main-link">
-              <span className="links__item">Home</span>
-              <Link className="l2" to="/">
-                Home
+              <span className="links__item">Home</span>   //! this will have all the chats from our user 
+              <Link className="l2" to="/home">
+                HOME
               </Link>
             </div>
           </li>
           <li className="links__item-wrapper">
 
             <div className="main-link">
-              <span className="links__item">About</span>
+              <span className="links__item">USER</span>  //! all the users in our app 
+              <Link className="l2" to="/users">
+                USER
+              </Link>
+            </div>
+          </li>
+          <li className="links__item-wrapper">
+            <div className="main-link">
+              <span className="links__item">CONFIG</span>
+              <Link className="l2" to="/settings">
+                CONFIG
+              </Link>
+            </div>
+          </li>
+          <li className="links__item-wrapper">
+            <div className="main-link">
+            <span className="links__item">ABOUT</span>
               <Link className="l2" to="/about">
-                About
-              </Link>
-            </div>
-          </li>
-          <li className="links__item-wrapper">
-            <div className="main-link">
-              <span className="links__item">Projects</span>
-              <Link className="l2" to="/projects">
-                Projects
-              </Link>
-            </div>
-          </li>
-          <li className="links__item-wrapper">
-            <div className="main-link">
-            <span className="links__item">Projects</span>
-              <Link className="l2" to="/projects">
-                Projects
+                ABOUT
               </Link>
             </div>
           </li>

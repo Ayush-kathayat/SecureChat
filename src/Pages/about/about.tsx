@@ -1,6 +1,6 @@
 import "./about.css";
-const about = () => {
-  return <>about</>;
+const About = () => {
+  return (<>about</>);
 };
 
-export default about;
+export default About;
