@@ -16,7 +16,7 @@ const Nav = () => {
         <ul className="links">
           <li className="links__item-wrapper">
             <div className="main-link">
-              <span className="links__item">Home</span>   //! this will have all the chats from our user 
+              <span className="links__item">HOME</span>   
               <Link className="l2" to="/home">
                 HOME
               </Link>
@@ -25,7 +25,7 @@ const Nav = () => {
           <li className="links__item-wrapper">
 
             <div className="main-link">
-              <span className="links__item">USER</span>  //! all the users in our app 
+              <span className="links__item">USER</span>  
               <Link className="l2" to="/users">
                 USER
               </Link>
