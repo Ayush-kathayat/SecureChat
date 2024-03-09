@@ -10,7 +10,6 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "ethers": "^6.11.1",
     "hardhat-vite": "^1.0.0",
     "react": "^18.2.0",
     "react-awesome-reveal": "^4.2.8",
@@ -19,6 +18,8 @@
     "web3": "^4.5.0"
   },
   "devDependencies": {
+    "@ethersproject/providers": "^5.7.2",
+    "@ethersproject/wallet": "^5.7.0",
     "@nomicfoundation/hardhat-toolbox": "^4.0.0",
     "@types/react": "^18.2.55",
     "@types/react-dom": "^18.2.19",
@@ -28,8 +29,11 @@
     "eslint": "^8.56.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.5",
-    "hardhat": "^2.20.1",
-    "typescript": "^5.2.2",
+    "ethers": "^6.11.1",
+    "hardhat": "^2.21.0",
+    "ts-node": "^10.9.2",
+    "typechain": "^8.3.2",
+    "typescript": "^5.4.2",
     "vite": "^5.1.0"
   }
 }
