@@ -1,20 +1,12 @@
 import "./auth.css";
 
-import { ChatAppContext } from "../../../context/ChatAppContext";
-import { useContext } from "react";
-
+// import { ChatAppContext } from "../../../context/ChatAppContext";
+// import { useContext } from "react";
 
 const Auth = () => {
-
-  const lala = useContext(ChatAppContext);
-  return (
-    <>auth
-    <h2>{lala}</h2>
-    </>
-  )
-}
+  return <>auth</>;
+};
 
 export default Auth;
-
 
 // this is how easy it is to use context in react

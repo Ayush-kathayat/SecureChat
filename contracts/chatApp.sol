@@ -58,7 +58,7 @@ contract ChatApp{
   }
 
   //get username
-  function getUserName(address pubkey) external view returns(string memory){  
+  function getUsername(address pubkey) external view returns(string memory){  
     require(checkUserExist(pubkey), "User does not exist");
     return users[pubkey].name;
   }

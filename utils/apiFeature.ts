@@ -2,6 +2,10 @@
 // Import ethers.js for Ethereum interactions
 import { ethers } from "ethers";
 
+
+
+// constant import of the address and the abi 
+import { ChatAppAddress, ChatAppAbi } from "../context/constant"; 
 // Define the Wallet and Contract interfaces for type safety
 export interface Wallet {
   address: string;
@@ -19,7 +23,11 @@ declare global {
   }
 }
 
+
+//! below is my provider prolly the most important part of the code
 const provider = new ethers.BrowserProvider(window.ethereum);
+
+
 // Function to check if a wallet is connected
 export const checkWalletConnection = async (): Promise<Wallet | null> => {
   if (!window.ethereum) {
@@ -63,13 +71,19 @@ export const connectWallet = async (): Promise<Wallet | null> => {
     return null;
   }
 };
+  
 
 // Function to get a contract instance
-export const getContractInstance = (contract: Contract): ethers.Contract => {
-  return new ethers.Contract(contract.address, contract.abi, provider);
+
+// dont try to export this below function it is just an internal function you know 
+//! nah nah export it
+export const getContractInstance = (): ethers.Contract => {
+  return new ethers.Contract(ChatAppAddress, ChatAppAbi, provider);
 };
 
-export const convertTime = (time) => {
+
+
+export const convertTime = (time : any ) => {
   const newTime = new Date(time.toNumber());
 
   const realTime =
