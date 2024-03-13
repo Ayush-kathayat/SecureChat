@@ -1,14 +1,21 @@
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useContext, useState } from "react";
+
+//internal imports
 import "./nav.css";
+import { Modal, Error } from "../index"; //? some components nothing more then that
+import { ChatAppContext } from "../../../context/ChatAppContext";
+import Image from "../../../utils/image";
 const Nav = () => {
   const [showMobMenu, setShowMobMenu] = useState(false);
-  
+  const [openModal, setOpenModal] = useState(false);
+
+  //! consuming the context
+  const { connectWallet, account, setAccount, username } = useContext(ChatAppContext);
+
   return (
     <>
-      <nav
-        className={showMobMenu ? "active navbar" : "navbar"}
-      >
+      <nav className={showMobMenu ? "active navbar" : "navbar"}>
         <Link className="logo" to="/">
           <h1 className="navbar__logo">SecureChat.</h1>
         </Link>
@@ -16,16 +23,15 @@ const Nav = () => {
         <ul className="links">
           <li className="links__item-wrapper">
             <div className="main-link">
-              <span className="links__item">HOME</span>   
+              <span className="links__item">HOME</span>
               <Link className="l2" to="/home">
                 HOME
               </Link>
             </div>
           </li>
           <li className="links__item-wrapper">
-
             <div className="main-link">
-              <span className="links__item">USER</span>  
+              <span className="links__item">USER</span>
               <Link className="l2" to="/users">
                 USER
               </Link>
@@ -41,10 +47,36 @@ const Nav = () => {
           </li>
           <li className="links__item-wrapper">
             <div className="main-link">
-            <span className="links__item">ABOUT</span>
+              <span className="links__item">ABOUT</span>
               <Link className="l2" to="/about">
                 ABOUT
               </Link>
+            </div>
+          </li>
+
+          <li className="links__item-wrapper">
+            <div className="main-link">
+              {account == "" ? (
+                <button
+                  className="connect-btn"
+                  onClick={async () => {
+                    const wallet = await connectWallet();
+                    setAccount(wallet.address);
+                  }}
+                >
+                  <span>Conect Wallet</span>
+                </button>
+              ) : (
+                <button className="connect-btn" onClick={() => setOpenModal(true)}>
+                  <Image
+                    src={username ? "https://api.dicebear.com/7.x/pixel-art/svg": "./plus.svg"}
+                    alt="user"
+                    width={30}
+                    height={30}
+                  />
+                  <span>{username || "Create Account"}</span>
+                </button>
+              )}
             </div>
           </li>
         </ul>

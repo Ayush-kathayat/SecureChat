@@ -40,8 +40,8 @@
 
   --text: hsl(270, 77%, 95%);
   --background: #171617;
-  --primary: #444241;
-  --secondary: #262527;
+  --primary: #005EB8;
+  --secondary: #1E1E1E;
   --accent: #FFED00;
   background-color: var(--background);
   color: var(--text);

@@ -1,9 +1,10 @@
-import { useState, useEffect, createContext, ReactNode } from "react";
+import React ,{ useState, useEffect, createContext, ReactNode } from "react";
 import { useNavigate } from "react-router-dom";
 
 // internal imports
 
 import {
+  checkWalletConnection,
   connectWallet,
   getContractInstance,
 } from "../utils/apiFeature";
@@ -12,8 +13,40 @@ interface AccountDetails {
   name: string;
   accountAddress: string;
 }
+interface AccountDetails {
+  name: string;
+  accountAddress: string;
+}
 
-export const ChatAppContext = createContext({});
+interface Wallet {
+  address: string;
+  connected: boolean;
+}
+
+interface ChatAppContextType {
+  readMessage: (friendAddress: string) => Promise<void>;
+  createAccount: (accountDetails: AccountDetails) => Promise<void>;
+  addFriends: (accountDetails: AccountDetails) => Promise<void>;
+  sendMessage: (friendAddress: string, message: string) => Promise<void>;
+  readUser: (userAddress: string) => Promise<void>;
+  connectWallet: () => Promise<Wallet | null>;
+  checkWalletConnection: () => Promise<Wallet | null>;
+  account: string;
+  setAccount: React.Dispatch<React.SetStateAction<string>>;
+  username: string;
+  friendList: string[];
+  friendMsg: string[];
+  loading: boolean;
+  userLists: string[];
+  error: string;
+  currentUsername: string;
+  currentUserAddress: string;
+}
+
+export const ChatAppContext = createContext<ChatAppContextType | undefined>(
+  undefined
+);
+// export const ChatAppContext = createContext({});
 
 export const ChatAppProvider = ({ children }: { children: ReactNode }) => {
   //USE STATE
@@ -178,7 +211,10 @@ export const ChatAppProvider = ({ children }: { children: ReactNode }) => {
         addFriends,
         sendMessage,
         readUser,
+        connectWallet,
+        checkWalletConnection,
         account,
+        setAccount,
         username,
         friendList,
         friendMsg,

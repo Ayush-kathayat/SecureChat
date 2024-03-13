@@ -74,6 +74,13 @@
   display: block;
 }
 
+/* style for connect buttons*/
+
+.connect-btn{
+  width : 4rem;
+  height : 4rem;
+}
+
 @media (max-width: 950px) {
   .navbar {
     /* position: ; */

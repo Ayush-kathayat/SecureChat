@@ -10,9 +10,9 @@ import About from "./Pages/about/about";
 import { ChatAppProvider } from "../context/ChatAppContext";
 
 const App = () => {
-  return (
-    <ChatAppProvider>
-      <Router>
+ return (
+    <Router>
+      <ChatAppProvider>
         <Routes>
           <Route path="/" element={<Auth />} />
           <Route path="/home" element={<Home />} />
@@ -20,9 +20,9 @@ const App = () => {
           <Route path="/settings" element={<Settings />} />
           <Route path="/about" element={<About />} />
         </Routes>
-      </Router>
-    </ChatAppProvider>
-  );
+      </ChatAppProvider>
+    </Router>
+ );
 };
 
 export default App;
