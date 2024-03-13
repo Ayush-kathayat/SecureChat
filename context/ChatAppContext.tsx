@@ -1,4 +1,4 @@
-import React ,{ useState, useEffect, createContext, ReactNode } from "react";
+import React, { useState, useEffect, createContext, ReactNode } from "react";
 import { useNavigate } from "react-router-dom";
 
 // internal imports
@@ -110,6 +110,28 @@ export const ChatAppProvider = ({ children }: { children: ReactNode }) => {
     fetchData();
   });
 
+  useEffect(() => {
+    const handleAccountsChanged = (accounts: string[]) => {
+      // When the accounts array is empty, it means the user has disconnected their wallet
+      if (accounts.length === 0) {
+        setAccount("");
+      }
+    };
+
+    if (window.ethereum) {
+      window.ethereum.on("accountsChanged", handleAccountsChanged);
+    }
+
+    // Cleanup function to remove the event listener when the component unmounts
+    return () => {
+      if (window.ethereum) {
+        window.ethereum.removeListener(
+          "accountsChanged",
+          handleAccountsChanged
+        );
+      }
+    };
+  }, []);
   // read message
 
   const readMessage = async (friendAddress: string) => {
