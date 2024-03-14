@@ -110,6 +110,7 @@ export const ChatAppProvider = ({ children }: { children: ReactNode }) => {
     fetchData();
   });
 
+  // this use effect is for checking the wallet connection and updating the account state
   useEffect(() => {
     const handleAccountsChanged = (accounts: string[]) => {
       // When the accounts array is empty, it means the user has disconnected their wallet

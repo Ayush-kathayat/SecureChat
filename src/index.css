@@ -40,9 +40,9 @@
 
   --text: hsl(270, 77%, 95%);
   --background: #171617;
-  --primary: #005EB8;
-  --secondary: #1E1E1E;
-  --accent: #FFED00;
+  --primary: #005eb8;
+  --secondary: #1e1e1e;
+  --accent: #ffed00;
   background-color: var(--background);
   color: var(--text);
 
@@ -75,6 +75,25 @@
   --font-weight-normal: 400;
   --font-weight-light: 300;
   --font-weight-thin: 200;
+
+
+  /* pardon the below shit"*/
+
+  /*========== Colors ==========*/
+  /*Color mode HSL(hue, saturation, lightness)*/
+  --gradient-color: linear-gradient(
+    90deg,
+    hsl(48, 100%, 50%) 0%,
+    hsl(28, 100%, 54%, 100%)
+  );
+  --black-color: hsl(225, 15%, 6%);
+  --reflection-color: hsla(48, 30%, 95%, 0.3);
+  --body-color: hsl(48, 100%, 98%);
+
+  /*========== Font and typography ==========*/
+  /*.5rem = 8px | 1rem = 16px ...*/
+  --body-font: "Montserrat", sans-serif;
+  --normal-font-size: 1rem;
 }
 
 /* smooth scroll css */
@@ -104,10 +123,8 @@ html.lenis {
   display: none;
 }
 
-
 /* Hide scrollbar for IE, Edge and Firefox */
 body {
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
-
 }

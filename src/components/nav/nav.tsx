@@ -3,7 +3,7 @@ import { useContext, useState } from "react";
 
 //internal imports
 import "./nav.css";
-import { Modal, Error } from "../index"; //? some components nothing more then that
+import { Modal, Error, Button } from "../index"; //? some components nothing more then that
 import { ChatAppContext } from "../../../context/ChatAppContext";
 import Image from "../../../utils/image";
 const Nav = () => {
@@ -11,7 +11,8 @@ const Nav = () => {
   const [openModal, setOpenModal] = useState(false);
 
   //! consuming the context
-  const { connectWallet, account, setAccount, username } = useContext(ChatAppContext);
+  const { connectWallet, account, setAccount, username } =
+    useContext(ChatAppContext);
 
   return (
     <>
@@ -19,7 +20,6 @@ const Nav = () => {
         <Link className="logo" to="/">
           <h1 className="navbar__logo">SecureChat.</h1>
         </Link>
-
         <ul className="links">
           <li className="links__item-wrapper">
             <div className="main-link">
@@ -53,7 +53,7 @@ const Nav = () => {
               </Link>
             </div>
           </li>
-
+{/* 
           <li className="links__item-wrapper">
             <div className="main-link">
               {account == "" ? (
@@ -67,9 +67,16 @@ const Nav = () => {
                   <span>Conect Wallet</span>
                 </button>
               ) : (
-                <button className="connect-btn" onClick={() => setOpenModal(true)}>
+                <button
+                  className="connect-btn"
+                  onClick={() => setOpenModal(true)}
+                >
                   <Image
-                    src={username ? "https://api.dicebear.com/7.x/pixel-art/svg": "./plus.svg"}
+                    src={
+                      username
+                        ? "https://api.dicebear.com/7.x/pixel-art/svg"
+                        : "./plus.svg"
+                    }
                     alt="user"
                     width={30}
                     height={30}
@@ -78,9 +85,14 @@ const Nav = () => {
                 </button>
               )}
             </div>
+          </li> */}
+
+          <li className="links__item-wrapper">
+            <div className="main-link btn-main-link">
+              <Button />
+            </div>
           </li>
         </ul>
-
         <div
           className="mobile-navbar-btn"
           onClick={() => {

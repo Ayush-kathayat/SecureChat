@@ -5,5 +5,6 @@ import Filter from "./filter/filter";
 import Loader from "./loader/loader";
 import Modal from "./modal/modal";
 import UserCard from "./userCard/userCard"; 
+import Button from "./button/button";
 
-export { Nav, Error, Friend, Filter, Loader, Modal, UserCard }; 
+export { Nav, Error, Friend, Filter, Loader, Modal, UserCard, Button }; 
