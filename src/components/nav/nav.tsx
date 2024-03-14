@@ -53,43 +53,34 @@ const Nav = () => {
               </Link>
             </div>
           </li>
-{/* 
+
           <li className="links__item-wrapper">
             <div className="main-link">
               {account == "" ? (
-                <button
-                  className="connect-btn"
+                <Button
+                  text="Connect Wallet"
                   onClick={async () => {
                     const wallet = await connectWallet();
                     setAccount(wallet.address);
                   }}
-                >
-                  <span>Conect Wallet</span>
-                </button>
+                />
               ) : (
-                <button
-                  className="connect-btn"
+                <Button
+                  text={username || "Create Account"}
                   onClick={() => setOpenModal(true)}
                 >
-                  <Image
+                  {/* <Image
                     src={
                       username
                         ? "https://api.dicebear.com/7.x/pixel-art/svg"
                         : "./plus.svg"
                     }
                     alt="user"
-                    width={30}
-                    height={30}
-                  />
-                  <span>{username || "Create Account"}</span>
-                </button>
+                    width={20}
+                    height={20}
+                  /> */}
+                </Button>
               )}
-            </div>
-          </li> */}
-
-          <li className="links__item-wrapper">
-            <div className="main-link btn-main-link">
-              <Button />
             </div>
           </li>
         </ul>
