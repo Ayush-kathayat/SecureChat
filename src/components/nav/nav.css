@@ -10,7 +10,7 @@
 
 .logo {
   color: var(--accent);
-  font-size: var(--font-size-large);
+  font-size: var(--font-size-xhuge);
   font-weight: var(--font-weight-bold);
   text-decoration: none;
 }
@@ -18,13 +18,14 @@
 .links {
   display: flex;
   width: 35%;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
   font-size: var(--font-size-large);
   font-weight: var(--font-weight-bold);
   transition: 0.5s ease-in-out;
   margin-left: 15rem;
+  gap: 1.9rem;
 }
 
 .main-link {
@@ -54,7 +55,7 @@
 }
 
 .main-link:hover > .l2 {
-  transform: translateY(-8px);
+  transform: translateY(-9px);
 }
 
 .git-icon {
@@ -138,13 +139,6 @@
     margin: 1rem;
   }
 
-  .navbar__logo {
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    margin: 1rem;
-  }
 
   .active > .links {
     display: flex;
