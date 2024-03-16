@@ -1,18 +1,22 @@
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+
 import { useContext, useState } from "react";
 
 //internal imports
 import "./nav.css";
 import { Modal, Error, Button } from "../index"; //? some components nothing more then that
 import { ChatAppContext } from "../../../context/ChatAppContext";
-import Image from "../../../utils/image";
+// import Image from "../../../utils/image";
 const Nav = () => {
   const [showMobMenu, setShowMobMenu] = useState(false);
-  const [openModal, setOpenModal] = useState(false);
+  // const [openModal, setOpenModal] = useState(false);
 
   //! consuming the context
   const { connectWallet, account, setAccount, username } =
     useContext(ChatAppContext);
+
+  const navigate = useNavigate();
 
   return (
     <>
@@ -55,7 +59,6 @@ const Nav = () => {
           </li>
         </ul>
 
-
         {/* button for creating account */}
 
         <div className="main-link login-button-wrapper">
@@ -70,7 +73,7 @@ const Nav = () => {
           ) : (
             <Button
               text={username || "Create Account"}
-              onClick={() => setOpenModal(true)}
+              onClick={() => {navigate('/')}}
             >
               {/* <Image
                     src={
