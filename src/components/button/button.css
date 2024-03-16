@@ -24,6 +24,7 @@
   display: flex;
   align-items: center;
   column-gap: 0.2rem;
+  font-size: var(--font-size-xlarge);
   overflow: hidden;
 }
 

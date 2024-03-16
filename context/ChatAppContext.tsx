@@ -13,10 +13,6 @@ interface AccountDetails {
   name: string;
   accountAddress: string;
 }
-interface AccountDetails {
-  name: string;
-  accountAddress: string;
-}
 
 interface Wallet {
   address: string;
@@ -155,15 +151,18 @@ export const ChatAppProvider = ({ children }: { children: ReactNode }) => {
     try {
       if (!name || !accountAddress)
         return setError("Please fill all the fields");
-
       const contract = getContractInstance();
+
       const getCreatedUser = await contract.addUser(name);
-      setLoading(true);
+      // setLoading(true);
+      
       await getCreatedUser.wait();
-      setLoading(false);
-      window.location.reload();
+      // setLoading(false);
+      console.log("User created successfully");
+      // window.location.reload();
     } catch (error) {
       setError("Error while creating account reload the page and try again");
+      console.log({ error });
     }
   };
 

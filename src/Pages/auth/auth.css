@@ -1,0 +1,71 @@
+.title {
+  font-size: var(--font-size-xmammoth);
+  color: var(--accent);
+  margin-bottom: 2rem;
+}
+
+.about {
+  width: 80%;
+  font-size: var(--font-size-xlarge);
+  color: var(--text);
+  margin-bottom: 2rem;
+  text-align: justify;
+  word-wrap: break-word;
+}
+.auth-wrapper {
+  display: flex;
+}
+
+.auth-left {
+  width: 50%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+.auth-right {
+  width: 50%;
+  margin-left: 10rem;
+  height: 100vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.username-input-wrapper,
+.address-input-wrapper {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 5rem;
+}
+
+
+.username-input,
+.address-input {
+  position: absolute;
+  width: 25%;
+  color: var(--text);
+  outline: none;
+  font-size: var(--font-size-large);
+  padding: 0 10px;
+  margin-left: 5rem;
+  line-height: 70px;
+  border-radius: 10px;
+  border: 3px solid var(--accent);
+  background: transparent;
+}
+
+.user-icon {
+  fill: var(--accent);
+  /* margin: 3rem; */
+}
+
+.auth-btn-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 7rem;
+}

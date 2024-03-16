@@ -2,10 +2,8 @@
 // Import ethers.js for Ethereum interactions
 import { ethers } from "ethers";
 
-
-
-// constant import of the address and the abi 
-import { ChatAppAddress, ChatAppAbi } from "../context/constant"; 
+// constant import of the address and the abi
+import { ChatAppAddress, ChatAppAbi } from "../context/constant";
 // Define the Wallet and Contract interfaces for type safety
 export interface Wallet {
   address: string;
@@ -22,7 +20,6 @@ declare global {
     ethereum: any; // You can replace 'any' with a more specific type if you have one
   }
 }
-
 
 //! below is my provider prolly the most important part of the code
 const provider = new ethers.BrowserProvider(window.ethereum);
@@ -71,19 +68,28 @@ export const connectWallet = async (): Promise<Wallet | null> => {
     return null;
   }
 };
-  
 
 // Function to get a contract instance
 
-// dont try to export this below function it is just an internal function you know 
+// dont try to export this below function it is just an internal function you know
 //! nah nah export it
 export const getContractInstance = (): ethers.Contract => {
-  return new ethers.Contract(ChatAppAddress, ChatAppAbi, provider);
+  // console.log("ChatAppAddress:", ChatAppAddress);
+  // console.log("ChatAppAbi:", ChatAppAbi);
+  // console.log("Provider:", provider);
+
+  try {
+    const contract = new ethers.Contract(ChatAppAddress, ChatAppAbi, provider);
+    // console.log("Contract:", contract);
+    return contract;
+  } catch (error) {
+    console.error("Failed to create contract instance:", error);
+    throw error;
+  }
 };
 
 
-
-export const convertTime = (time : any ) => {
+export const convertTime = (time: any) => {
   const newTime = new Date(time.toNumber());
 
   const realTime =
