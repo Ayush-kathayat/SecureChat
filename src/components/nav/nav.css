@@ -1,6 +1,6 @@
 .navbar {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   padding: 1.3rem;
   transition: 0.5s ease-in-out;
   position: fixed;
@@ -17,9 +17,9 @@
 
 .navbar__logo {
   display: block;
-  position: absolute;
+  /* position: absolute;
   top: 0;
-  left: 0;
+  left: 0; */
   margin: 1rem;
 }
 
@@ -32,7 +32,7 @@
   font-size: var(--font-size-large);
   font-weight: var(--font-weight-bold);
   transition: 0.5s ease-in-out;
-  margin-left: 15rem;
+  /* margin-left: 70rem; */
   gap: 1.9rem;
 }
 
@@ -41,7 +41,6 @@
   flex-direction: column;
   overflow: hidden;
 }
-
 
 .l2 {
   display: inline-block;
@@ -88,18 +87,30 @@
 
 /* style for connect buttons*/
 
-.connect-btn{
-  width : 4rem;
-  height : 4rem;
+.connect-btn {
+  width: 4rem;
+  height: 4rem;
 }
 
-@media (max-width: 950px) {
+@media (max-width: 1190px) {
   .navbar {
-    /* position: ; */
     height: 5rem;
     transition: 0.5s ease-in-out;
+    flex-direction: column;
+    align-items: normal;
   }
 
+  .btn-container {
+    height: 15vh;
+  }
+
+  .navbar__logo {
+    /* display: block; */
+    position: absolute;
+    top: 0;
+    left: 0;
+    /* margin: 1rem; */
+  }
   #blurry {
     background-color: rgba(38, 37, 39, 0.9); /* 50% transparent */
   }
@@ -118,6 +129,9 @@
     bottom: 5rem; */
     transition: 0.5s ease-in-out;
     /* opacity: 0; */
+  }
+  .login-button-wrapper {
+    display: none;
   }
 
   /* .links:hover{
@@ -144,9 +158,8 @@
     position: absolute;
     top: 0;
     right: 0;
-    margin: 1rem;
+    margin: 2rem;
   }
-
 
   .active > .links {
     display: flex;
@@ -159,6 +172,19 @@
     transition: 0.5s ease-in-out;
     margin-right: 20rem;
     padding: 5rem;
+  }
+
+  .active > .login-button-wrapper {
+    display: block;
+  }
+}
+
+@media (max-width: 550px) {
+  .logo {
+    font-size: var(--font-size-xlarge);
+  }
+  .mobile-navbar-btn {
+    margin: 1.3rem;
   }
 }
 
