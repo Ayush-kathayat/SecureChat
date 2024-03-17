@@ -27,6 +27,7 @@ declare global {
 // Function to check if a wallet is connected
 export const checkWalletConnection = async (): Promise<Wallet | null> => {
   if (!window.ethereum) {
+    window.location.href = "/connect"; // Redirect to /connect
     console.log("Please install MetaMask or another Ethereum wallet.");
     return null;
   }
@@ -48,6 +49,7 @@ export const checkWalletConnection = async (): Promise<Wallet | null> => {
 // Function to connect the wallet
 export const connectWallet = async (): Promise<Wallet | null> => {
   if (!window.ethereum) {
+    window.location.href = "/connect"; // Redirect to /connect
     console.log("Please install MetaMask or another Ethereum wallet.");
     return null;
   }
@@ -111,12 +113,14 @@ export const convertTime = (time: any) => {
 const provider = new ethers.JsonRpcProvider();
 // Function to get a contract instance
 export const getContractInstance = async (): Promise<ethers.Contract> => {
+
   try {
     const signer = await provider.getSigner();
     const contract = new ethers.Contract(ChatAppAddress, ChatAppAbi, signer);
     return contract;
   } catch (error) {
     console.error("Failed to create contract instance:", error);
+    // window.location.href = "/connect"; // Redirect to /connect
     throw error;
   }
 };

@@ -1,12 +1,14 @@
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
-import { useContext, useState } from "react";
+import { useContext, useState, useCallback } from "react";
 
 //internal imports
 import "./nav.css";
 import { Modal, Error, Button } from "../index"; //? some components nothing more then that
+
 import { ChatAppContext } from "../../../context/ChatAppContext";
+
 // import Image from "../../../utils/image";
 const Nav = () => {
   const [showMobMenu, setShowMobMenu] = useState(false);
@@ -17,6 +19,13 @@ const Nav = () => {
     useContext(ChatAppContext);
 
   const navigate = useNavigate();
+
+
+    // Define the onClick handler here, using useCallback
+    const connectWalletOnClick = useCallback(async () => {
+      const wallet = await connectWallet();
+      setAccount(wallet.address);
+    }, [connectWallet, setAccount]);
 
   return (
     <>
@@ -65,10 +74,7 @@ const Nav = () => {
           {account == "" ? (
             <Button
               text="Connect Wallet"
-              onClick={async () => {
-                const wallet = await connectWallet();
-                setAccount(wallet.address);
-              }}
+              onClick={connectWalletOnClick}
             />
           ) : (
             <Button

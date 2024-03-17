@@ -60,51 +60,47 @@ export const ChatAppProvider = ({ children }: { children: ReactNode }) => {
   const [currentUserAddress, setCurrentUserAddress] = useState("");
 
   //INTERFACE FOR ACCOUNT DETAILS
-
-  // fetch DATA TIME OF PAGE LOAD
-
-  const fetchData = async () => {
-   
-      //get contract
-      const contract = await getContractInstance();
-
-      //get account
-      const connectAccount = await connectWallet();
-
-      if (connectAccount !== null) {
-        setAccount(connectAccount.address);
-      }
-
-      //get username
-      const userName = await contract.getUsername(connectAccount);
-
-      if (userName !== null) {
-        setUsername(userName);
-      }
-
-      //get the friend list
-
-      const friendLists = await contract.getMyFriendList();
-
-      if (friendLists !== null) {
-        setFriendList(friendLists);
-      }
-
-      // get all the users
-
-      const userList = await contract.getAllAppUser();
-
-      if (userList !== null) {
-        setUserLists(userList);
-      }
-  
-    //   setError("Please install metamask and connect your wallet");
-    // }
-  };
+  const [dataFetched, setDataFetched] = useState(false);
 
   useEffect(() => {
+    console.log("Component rendered");
+
+    const fetchData = async () => {
+      console.log("fetchData called");
+
+      if (!dataFetched) {
+        try {
+          const contract = await getContractInstance();
+          const connectAccount = await connectWallet();
+
+          if (connectAccount !== null) {
+            setAccount(connectAccount.address);
+          }
+
+          const userName = await contract.getUsername(connectAccount);
+          if (userName !== null) {
+            setUsername(userName);
+          }
+
+          const friendLists = await contract.getMyFriendList();
+          if (friendLists !== null) {
+            setFriendList(friendLists);
+          }
+
+          const userList = await contract.getAllAppUser();
+          if (userList !== null) {
+            setUserLists(userList);
+          }
+
+          setDataFetched(true);
+        } catch (error) {
+          console.error("Error fetching data:", error);
+        }
+      }
+    };
+
     fetchData();
-  });
+  }, []);
 
   // this use effect is for checking the wallet connection and updating the account state
   useEffect(() => {
@@ -147,7 +143,7 @@ export const ChatAppProvider = ({ children }: { children: ReactNode }) => {
 
   // create account
 
-  const createAccount = async ({ name, accountAddress }: AccountDetails) => {
+  const createAccount = async ({ name }: AccountDetails) => {
     try {
       // if (!name || !accountAddress)
       //   return setError("Please fill all the fields");
@@ -160,6 +156,10 @@ export const ChatAppProvider = ({ children }: { children: ReactNode }) => {
       console.log(`User created successfully ${name}`);
       // window.location.reload();
     } catch (error) {
+      if (!window.ethereum) {
+        window.location.href = "/connect"; // Redirect to /connect
+        console.log("Please install MetaMask or another Ethereum wallet.");
+      }
       setError("Error while creating account reload the page and try again");
       console.log({ error });
     }
@@ -182,7 +182,7 @@ export const ChatAppProvider = ({ children }: { children: ReactNode }) => {
       setLoading(false);
       // To navigate to "/home"
       navigate("/home");
-      window.location.reload();
+      // window.location.reload();
     } catch (error) {
       setError("Error while adding friend reload the page and try again");
     }
@@ -201,7 +201,7 @@ export const ChatAppProvider = ({ children }: { children: ReactNode }) => {
       setLoading(true);
       await addMessage.wait();
       setLoading(false);
-      window.location.reload();
+      // window.location.reload();
     } catch (error) {
       setError("Error while sending message reload the page and try again");
     }

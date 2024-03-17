@@ -1,0 +1,58 @@
+
+.four-wrapper{
+  margin : 0;
+  padding : 0;
+  display: flex;
+  justify-content: center;
+  background-color: var(--background-color);
+}
+
+.four-left{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  height: 100vh;
+  /* background-color: #263238; */
+}
+
+.four-right{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  height: 100vh;
+  /* background-color: #37474f; */
+}
+
+.four-title{
+  font-family: var(--primary-font);
+  font-size: var(--font-size-xxmammoth);
+  font-weight: var(--font-weight-bold);
+  color: var(--accent);
+  margin-bottom: 2rem;
+  text-transform:  uppercase;
+  gap: 1rem;
+}
+
+.four-info{
+  font-family: var(--secondary-font);
+  font-size: var(--font-size-large);
+  font-weight: var(--font-weight-semibold);
+  margin-bottom: 2rem;
+}
+
+/* .four-btn{
+  font-family: var(--cta-font);
+  font-size: var(--font-size-large);
+  font-weight: var(--font-weight-bold);
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 5px;
+  background-color: var(--accent);
+  color: var(--background-color);
+  cursor: pointer;
+  transition: all 0.3s ease;
+} */

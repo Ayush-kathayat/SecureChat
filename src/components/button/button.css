@@ -29,7 +29,8 @@
 }
 
 .button__text {
-  font-weight: 700;
+  font-family: var(--subtitle-font);
+  font-weight: 900;
 }
 
 .button__icon {
