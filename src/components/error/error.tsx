@@ -1,9 +1,12 @@
+import React from 'react';
 import "./error.css";
 
-const Error = () => {
-  return (
-    <>Error component</>
-  )
+interface ErrorProps {
+ error: string;
 }
+
+const Error: React.FC<ErrorProps> = ({ error }) => {
+ return <div>{error}</div>;
+};
 
 export default Error;

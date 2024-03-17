@@ -64,9 +64,9 @@ export const ChatAppProvider = ({ children }: { children: ReactNode }) => {
   // fetch DATA TIME OF PAGE LOAD
 
   const fetchData = async () => {
-    try {
+   
       //get contract
-      const contract = getContractInstance();
+      const contract = await getContractInstance();
 
       //get account
       const connectAccount = await connectWallet();
@@ -97,9 +97,9 @@ export const ChatAppProvider = ({ children }: { children: ReactNode }) => {
       if (userList !== null) {
         setUserLists(userList);
       }
-    } catch (error) {
-      setError("Please install metamask and connect your wallet");
-    }
+  
+    //   setError("Please install metamask and connect your wallet");
+    // }
   };
 
   useEffect(() => {
@@ -133,7 +133,7 @@ export const ChatAppProvider = ({ children }: { children: ReactNode }) => {
 
   const readMessage = async (friendAddress: string) => {
     try {
-      const contract = getContractInstance();
+      const contract = await getContractInstance();
 
       const read = await contract.readMessage(friendAddress);
 
@@ -149,16 +149,15 @@ export const ChatAppProvider = ({ children }: { children: ReactNode }) => {
 
   const createAccount = async ({ name, accountAddress }: AccountDetails) => {
     try {
-      if (!name || !accountAddress)
-        return setError("Please fill all the fields");
-      const contract = getContractInstance();
+      // if (!name || !accountAddress)
+      //   return setError("Please fill all the fields");
+      const contract = await getContractInstance();
 
       const getCreatedUser = await contract.addUser(name);
       // setLoading(true);
-      
       await getCreatedUser.wait();
       // setLoading(false);
-      console.log("User created successfully");
+      console.log(`User created successfully ${name}`);
       // window.location.reload();
     } catch (error) {
       setError("Error while creating account reload the page and try again");
@@ -176,7 +175,7 @@ export const ChatAppProvider = ({ children }: { children: ReactNode }) => {
       if (!name || !accountAddress)
         return setError("Please fill all the fields");
 
-      const contract = getContractInstance();
+      const contract = await getContractInstance();
       const addFriend = await contract.addFriend(accountAddress, name);
       setLoading(true);
       await addFriend.wait();
@@ -196,7 +195,7 @@ export const ChatAppProvider = ({ children }: { children: ReactNode }) => {
       if (!friendAddress || !message)
         return setError("Please fill all the fields");
 
-      const contract = getContractInstance();
+      const contract = await getContractInstance();
       const addMessage = await contract.sendMessage(friendAddress, message);
 
       setLoading(true);
@@ -212,7 +211,7 @@ export const ChatAppProvider = ({ children }: { children: ReactNode }) => {
 
   const readUser = async (userAddress: string) => {
     try {
-      const contract = getContractInstance();
+      const contract = await getContractInstance();
 
       const userName = await contract.getUsername(userAddress);
 

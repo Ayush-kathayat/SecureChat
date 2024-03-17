@@ -4,15 +4,16 @@ import { useNavigate } from "react-router-dom";
 // internal imports
 import "./auth.css";
 import { ChatAppContext } from "../../../context/ChatAppContext";
-import { Button } from "..//../components/index";
+import { Button, Error } from "..//../components/index";
 
 // import { ChatAppContext } from "../../../context/ChatAppContext";
+ 
 
 const Auth = () => {
   const [name, setName] = useState("");
   const [accountAddress, setAccountAddress] = useState("");
 
-  const { account, createAccount } = useContext(ChatAppContext);
+  const { account, createAccount, error } = useContext(ChatAppContext);
   const navigate = useNavigate();
 
   return (
@@ -73,6 +74,7 @@ const Auth = () => {
           </div>
         </div>
       </div>
+      { error == "" ? "" : <Error error = {error} />  }
     </>
   );
 };
