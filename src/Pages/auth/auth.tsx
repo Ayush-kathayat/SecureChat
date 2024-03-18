@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 // internal imports
@@ -12,9 +12,22 @@ import { Button, Error } from "..//../components/index";
 const Auth = () => {
   const [name, setName] = useState("");
   const [accountAddress, setAccountAddress] = useState("");
+  const [modalOpen, setModalOpen] = useState(false);
+  const [modalError, setModalError] = useState(""); // New state for the error message in the modal
 
-  const { account, createAccount, error } = useContext(ChatAppContext);
+
+
+  const { account, createAccount, error, setError } = useContext(ChatAppContext);
   const navigate = useNavigate();
+
+
+  useEffect(() => {
+    if (error !== "") {
+      setModalError(error); // Set the error message for the modal
+      setModalOpen(true);
+      setError(""); // Reset the error after it's been shown
+    }
+  }, [error, setError]);
 
   return (
     <>
@@ -28,7 +41,8 @@ const Auth = () => {
         </div>
 
         <div className="auth-right">
-          <h1 className="title">WELCOME TO THE SECURE CHAT</h1>
+          <h1 className="title">WELCOME TO THE </h1>
+          <span className="main-title">SECURE CHAT</span>
           <p className="about">
             The go-to platform for effortless, blockchain-secure communication.
             Our app leverages blockchain technology to enhance your connections,
@@ -74,7 +88,7 @@ const Auth = () => {
           </div>
         </div>
       </div>
-      { error == "" ? "" : <Error error = {error} />  }
+      {modalOpen && <Error error={modalError} modalOpen={modalOpen} setModalOpen={setModalOpen} />}
     </>
   );
 };

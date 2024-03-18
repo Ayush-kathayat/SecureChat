@@ -1,12 +1,22 @@
 .title {
+  font-family: var(--primary-font);
   font-size: var(--font-size-xmammoth);
   color: var(--accent);
+  /* margin-bottom: 2rem; */
+}
+
+.main-title {
+  font-family: var(--primary-font);
+  font-size: var(--font-size-xdinormous);
+  color: var(--accent);
   margin-bottom: 2rem;
+  letter-spacing: 0.6rem;
 }
 
 .about {
   width: 80%;
-  font-size: var(--font-size-xlarge);
+  font-family: var(--secondary-font);
+  font-size: var(--font-size-large);
   color: var(--text);
   margin-bottom: 2rem;
   text-align: justify;
@@ -45,9 +55,10 @@
 .username-input,
 .address-input {
   position: absolute;
-  width: 25%;
+  width: 27%;
   color: var(--text);
   outline: none;
+  font-family: var(--cta-font);
   font-size: var(--font-size-large);
   padding: 0 10px;
   margin-left: 5rem;

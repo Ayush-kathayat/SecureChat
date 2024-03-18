@@ -35,6 +35,7 @@ interface ChatAppContextType {
   loading: boolean;
   userLists: string[];
   error: string;
+  setError: React.Dispatch<React.SetStateAction<string>>; // Add this line
   currentUsername: string;
   currentUserAddress: string;
 }
@@ -160,7 +161,8 @@ export const ChatAppProvider = ({ children }: { children: ReactNode }) => {
         window.location.href = "/connect"; // Redirect to /connect
         console.log("Please install MetaMask or another Ethereum wallet.");
       }
-      setError("Error while creating account reload the page and try again");
+      setError(error.reason || error.message || error.toString());
+
       console.log({ error });
     }
   };
@@ -242,6 +244,7 @@ export const ChatAppProvider = ({ children }: { children: ReactNode }) => {
         loading,
         userLists,
         error,
+        setError,
         currentUsername,
         currentUserAddress,
       }}
