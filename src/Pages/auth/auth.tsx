@@ -7,7 +7,6 @@ import { ChatAppContext } from "../../../context/ChatAppContext";
 import { Button, Error } from "..//../components/index";
 
 // import { ChatAppContext } from "../../../context/ChatAppContext";
- 
 
 const Auth = () => {
   const [name, setName] = useState("");
@@ -15,11 +14,9 @@ const Auth = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const [modalError, setModalError] = useState(""); // New state for the error message in the modal
 
-
-
-  const { account, createAccount, error, setError } = useContext(ChatAppContext);
+  const { account, createAccount, error, setError } =
+    useContext(ChatAppContext);
   const navigate = useNavigate();
-
 
   useEffect(() => {
     if (error !== "") {
@@ -88,7 +85,14 @@ const Auth = () => {
           </div>
         </div>
       </div>
-      {modalOpen && <Error error={modalError} modalOpen={modalOpen} setModalOpen={setModalOpen} />}
+      {modalOpen && (
+        <Error
+          error={modalError}
+          modalOpen={modalOpen}
+          setModalOpen={setModalOpen}
+        />
+      )}
+      {/* <Error error={"User Already Exists"} modalOpen={true} setModalOpen={setModalOpen} /> */}
     </>
   );
 };
