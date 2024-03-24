@@ -44,7 +44,7 @@ contract ChatApp {
     // ADD USER or create account
 
     function addUser(string calldata _name) external {
-        require(!checkUserExist(msg.sender), "User already exist");
+        require(checkUserExist(msg.sender) == false, "User already exists!");
         require(bytes(_name).length > 0, "username cannot be empty");
         users[msg.sender].name = _name;
 
@@ -53,7 +53,7 @@ contract ChatApp {
 
     //get username
     function getUsername(address pubkey) external view returns (string memory) {
-        require(checkUserExist(pubkey), "User does not exist");
+        require(checkUserExist(pubkey), "User is not registered!");
         return users[pubkey].name;
     }
 

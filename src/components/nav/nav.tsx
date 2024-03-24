@@ -20,12 +20,13 @@ const Nav = () => {
 
   const navigate = useNavigate();
 
+  // Define the onClick handler here, using useCallback
+  const connectWalletOnClick = useCallback(async () => {
+    const wallet = await connectWallet();
+    setAccount(wallet.address);
+  }, [connectWallet, setAccount]);
 
-    // Define the onClick handler here, using useCallback
-    const connectWalletOnClick = useCallback(async () => {
-      const wallet = await connectWallet();
-      setAccount(wallet.address);
-    }, [connectWallet, setAccount]);
+  console.log("kaka", username);
 
   return (
     <>
@@ -71,27 +72,15 @@ const Nav = () => {
         {/* button for creating account */}
 
         <div className="main-link login-button-wrapper">
-          {account == "" ? (
-            <Button
-              text="Connect Wallet"
-              onClick={connectWalletOnClick}
-            />
+          {account === "" ? (
+            <Button text="Connect Wallet" onClick={connectWalletOnClick} />
           ) : (
             <Button
-              text={username || "Create Account"}
-              onClick={() => {navigate('/')}}
-            >
-              {/* <Image
-                    src={
-                      username
-                        ? "https://api.dicebear.com/7.x/pixel-art/svg"
-                        : "./plus.svg"
-                    }
-                    alt="user"
-                    width={20}
-                    height={20}
-                  /> */}
-            </Button>
+              text={ username || "Create Account"}
+              onClick={() => {
+                navigate("/");
+              }}
+            />
           )}
         </div>
 

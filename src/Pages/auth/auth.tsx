@@ -40,13 +40,13 @@ const Auth = () => {
         <div className="auth-right">
           <h1 className="title">WELCOME TO THE </h1>
           <span className="main-title">SECURE CHAT</span>
-          <p className="about">
+          {/* <p className="about">
             The go-to platform for effortless, blockchain-secure communication.
             Our app leverages blockchain technology to enhance your connections,
             ensuring privacy, security, and an unchangeable history of
             communication. Start your journey with us today and experience the
             future of secure, decentralized communication.
-          </p>
+          </p> */}
 
           <div className="username-input-wrapper">
             <img className="user-icon" src="user.svg" alt="user" />
@@ -71,10 +71,7 @@ const Auth = () => {
           </div>
 
           <div className="auth-btn-wrapper">
-            <Button
-              text="SUBMIT"
-              onClick={() => createAccount({ name, accountAddress })}
-            />
+            <Button text="SUBMIT" onClick={() => createAccount({ name })} />
 
             <Button
               text="CANCEL"
@@ -82,6 +79,11 @@ const Auth = () => {
                 navigate("/home");
               }}
             />
+
+            {/* <Button
+              text="GET USERNAME"
+              onClick={getUSERNAME}
+            /> */}
           </div>
         </div>
       </div>

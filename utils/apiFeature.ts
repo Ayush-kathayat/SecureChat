@@ -63,6 +63,8 @@ export const connectWallet = async (): Promise<Wallet | null> => {
       return null;
     }
 
+   
+
     return { address: accounts[0], connected: true };
   } catch (error) {
     console.error("Failed to connect wallet:", error);
@@ -109,18 +111,40 @@ export const convertTime = (time: any) => {
 
 // now below we will be connecting with our smart contract
 
-// Create a provider
-const provider = new ethers.JsonRpcProvider();
-// Function to get a contract instance
-export const getContractInstance = async (): Promise<ethers.Contract> => {
+// // Create a provider
+// const provider = new ethers.JsonRpcProvider("http://localhost:8545");
+// // Function to get a contract instance
+// export const getContractInstance = async (): Promise<ethers.Contract> => {
 
-  try {
-    const signer = await provider.getSigner();
-    const contract = new ethers.Contract(ChatAppAddress, ChatAppAbi, signer);
-    return contract;
-  } catch (error) {
-    console.error("Failed to create contract instance:", error);
-    // window.location.href = "/connect"; // Redirect to /connect
-    throw error;
+//   try {
+//     const signer = await provider.getSigner();
+//     const contract = new ethers.Contract(ChatAppAddress, ChatAppAbi, signer);
+//     return contract;
+//   } catch (error) {
+//     console.error("Failed to create contract instance:", error);
+//     // window.location.href = "/connect"; // Redirect to /connect
+//     throw error;
+//   }
+// };
+
+
+// Function to get provider or signer and then get the contract instance
+export async function getContractInstance() {
+  // Assuming you have the contract address and ABI
+  // const contractAddress = ChatAppAddress;
+  // const contractABI = ChatAppAbi;
+
+  if (!window.ethereum) {
+    throw new Error('Ethereum provider is not available');
   }
-};
+  // const provider = new ethers.providers.Web3Provider(window.ethereum);
+  const provider = new ethers.BrowserProvider(window.ethereum);
+
+  // Get the signer from the provider
+  const signer = await provider.getSigner();
+
+  // Create a contract instance
+  const contract = new ethers.Contract(ChatAppAddress, ChatAppAbi, signer);
+
+  return contract;
+}

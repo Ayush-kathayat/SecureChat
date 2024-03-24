@@ -38,6 +38,7 @@ interface ChatAppContextType {
   setError: React.Dispatch<React.SetStateAction<string>>; // Add this line
   currentUsername: string;
   currentUserAddress: string;
+  // getUSERNAME: () => Promise<void>;
 }
 
 export const ChatAppContext = createContext<ChatAppContextType | undefined>(
@@ -71,16 +72,20 @@ export const ChatAppProvider = ({ children }: { children: ReactNode }) => {
 
       if (!dataFetched) {
         try {
-          const contract = await getContractInstance();
           const connectAccount = await connectWallet();
+          const contract = await getContractInstance();
 
           if (connectAccount !== null) {
             setAccount(connectAccount.address);
           }
 
-          const userName = await contract.getUsername(connectAccount);
+          console.log(` public key : ${connectAccount?.address}`);
+          const userName = await contract.getUsername(connectAccount?.address);
+
           if (userName !== null) {
+            console.log({ userName });
             setUsername(userName);
+            console.log(`User created successfully: ${username}`);
           }
 
           const friendLists = await contract.getMyFriendList();
@@ -127,7 +132,6 @@ export const ChatAppProvider = ({ children }: { children: ReactNode }) => {
     };
   }, []);
   // read message
-
   const readMessage = async (friendAddress: string) => {
     try {
       const contract = await getContractInstance();
@@ -143,19 +147,18 @@ export const ChatAppProvider = ({ children }: { children: ReactNode }) => {
   };
 
   // create account
-
   const createAccount = async ({ name }: AccountDetails) => {
     try {
-      // if (!name || !accountAddress)
-      //   return setError("Please fill all the fields");
       const contract = await getContractInstance();
 
-      const getCreatedUser = await contract.addUser(name);
-      // setLoading(true);
-      await getCreatedUser.wait();
-      // setLoading(false);
-      console.log(`User created successfully ${name}`);
-      // window.location.reload();
+      const txResponse = await contract.addUser(name);
+      console.log(`Transaction Hash: ${txResponse.hash}`);
+
+      // Wait for the transaction to be mined
+      const receipt = await txResponse.wait();
+      console.log(`Transaction was successful: ${receipt.status === 1}`);
+
+      window.location.href = "/home"; // Redirect to /home
     } catch (error) {
       if (!window.ethereum) {
         window.location.href = "/connect"; // Redirect to /connect
@@ -167,6 +170,21 @@ export const ChatAppProvider = ({ children }: { children: ReactNode }) => {
     }
   };
 
+  // const getUSERNAME = async () => {
+  //   try {
+  //     const contract = await getContractInstance();
+  //     const connectAccount = await connectWallet();
+  //     console.log(` public key : ${connectAccount?.address}`);
+
+  //     const userName = await contract.getUsername(connectAccount?.address);
+  //     if (userName !== null) {
+  //       setUsername(userName);
+  //     }
+  //     console.log(` hello ${userName}  how are you doing `);
+  //   } catch (error) {
+  //     setError(error.reason || error.message || error.toString());
+  //   }
+  // };
   // add your Friends
 
   // Inside your component
@@ -247,6 +265,7 @@ export const ChatAppProvider = ({ children }: { children: ReactNode }) => {
         setError,
         currentUsername,
         currentUserAddress,
+        // getUSERNAME,
       }}
     >
       {children}
