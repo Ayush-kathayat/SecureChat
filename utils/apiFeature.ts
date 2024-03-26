@@ -49,7 +49,7 @@ export const checkWalletConnection = async (): Promise<Wallet | null> => {
 // Function to connect the wallet
 export const connectWallet = async (): Promise<Wallet | null> => {
   if (!window.ethereum) {
-    window.location.href = "/connect"; // Redirect to /connect
+    // window.location.href = "/connect"; // Redirect to /connect
     console.log("Please install MetaMask or another Ethereum wallet.");
     return null;
   }
@@ -134,9 +134,9 @@ export async function getContractInstance() {
   // const contractAddress = ChatAppAddress;
   // const contractABI = ChatAppAbi;
 
-  if (!window.ethereum) {
-    throw new Error('Ethereum provider is not available');
-  }
+  // if (!window.ethereum) {
+  //   throw new Error('Ethereum provider is not available');
+  // }
   // const provider = new ethers.providers.Web3Provider(window.ethereum);
   const provider = new ethers.BrowserProvider(window.ethereum);
 
