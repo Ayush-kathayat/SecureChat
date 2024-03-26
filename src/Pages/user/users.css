@@ -1,0 +1,9 @@
+.users-wrapper {
+  margin-top: 15rem;
+}
+
+.users-list{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}

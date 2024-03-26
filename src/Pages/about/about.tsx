@@ -1,6 +1,10 @@
 import "./about.css";
+import { Nav } from "..//../components/index";
+
 const About = () => {
-  return (<>about</>);
+  return (<>
+  <Nav />
+  </>);
 };
 
 export default About;

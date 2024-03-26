@@ -1,8 +1,11 @@
 import "./settings.css";
+import { Nav } from "..//../components/index";
 
 const Settings = () => {
   return (
-    <div>settings</div>
+    <>
+    <Nav />
+    </>
   )
 }
 

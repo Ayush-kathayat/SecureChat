@@ -1,0 +1,38 @@
+.user-card-wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 0.8rem;
+    margin: 2rem;
+    padding: 2rem;
+    outline: 1px solid var(--accent);
+    transition: box-shadow 0.3s ease;
+    border-radius: 5px;
+}
+
+.user-card-wrapper:hover{
+    transition: box-shadow 0.3s ease;
+    box-shadow: 0 0 10px 5px var(--accent);
+}
+
+.user-card-details{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+}
+
+.user-card-details h3{
+    font-family: var(--subtitle-font);
+    font-size: var(--font-size-xhuge);
+    font-weight: 700;
+    color: var(--accent);
+}
+
+.user-card-details p{
+    font-family: var(--body-font);
+    font-size: var(--font-size-normal);
+    color: var(--text);
+}
