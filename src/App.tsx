@@ -7,6 +7,7 @@ import Users from "./Pages/user/users";
 import Settings from "./Pages/settings/settings";
 import About from "./Pages/about/about";
 import Connect from "./Pages/connect/connect";
+import Layout from "../utils/layout"; // Import the Layout component
 
 import { ChatAppProvider } from "../context/ChatAppContext";
 
@@ -15,12 +16,12 @@ const App = () => {
     <Router>
       <ChatAppProvider>
         <Routes>
-          <Route path="/" element={<Auth />} />
-          <Route path="/home" element={<Home />} />
-          <Route path="/users" element={<Users />} />
-          <Route path="/settings" element={<Settings />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/connect" element={<Connect />} />
+          <Route path="/" element={<Layout><Auth /></Layout>} />
+          <Route path="/home" element={<Layout><Home /></Layout>} />
+          <Route path="/users" element={<Layout><Users /></Layout>} />
+          <Route path="/settings" element={<Layout><Settings /></Layout>} />
+          <Route path="/about" element={<Layout><About /></Layout>} />
+          <Route path="/connect" element={<Layout><Connect /></Layout>} />
         </Routes>
       </ChatAppProvider>
     </Router>
