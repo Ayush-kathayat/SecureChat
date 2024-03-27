@@ -9,9 +9,15 @@ const Layout = ({ children }) => {
 
   useEffect(() => {
     if (error !== "") {
+      document.body.style.overflow = "hidden";
       setModalError(error); // Set the error message for the modal
       setModalOpen(true);
       setError(""); // Reset the error after it's been shown
+      console.log("loda");
+    }
+    else{
+      document.body.style.overflow = "hidden";
+      console.log("choot");
     }
   }, [error, setError]);
 
@@ -24,6 +30,7 @@ const Layout = ({ children }) => {
           setModalOpen={setModalOpen}
         />
       )}
+
       {children}
     </>
   );

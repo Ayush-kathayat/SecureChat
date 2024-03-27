@@ -18,13 +18,6 @@ const Auth = () => {
     useContext(ChatAppContext);
   const navigate = useNavigate();
 
-  // useEffect(() => {
-  //   if (error !== "") {
-  //     setModalError(error); // Set the error message for the modal
-  //     setModalOpen(true);
-  //     setError(""); // Reset the error after it's been shown
-  //   }
-  // }, [error, setError]);
 
   return (
     <>

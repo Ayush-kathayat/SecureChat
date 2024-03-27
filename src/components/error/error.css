@@ -4,17 +4,19 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(189, 189, 189, 0.9);
+  background-color: black;
+  z-index : 9999999;
+  opacity: 0.95;
  
 }
 
 .error-msg-wrapper {
-  position: absolute;
+  position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 40%;
-  height: 40%;
+  width: auto;
+  height: auto;
   padding: 2rem;
   background-color: var(--secondary);
   border-radius: 25px;
@@ -27,7 +29,9 @@
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  z-index: 100;
+  gap :3rem;
+  z-index: 99999996;
+  
 }
 
 .error-msg-title{

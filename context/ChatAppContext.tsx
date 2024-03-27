@@ -204,7 +204,14 @@ export const ChatAppProvider = ({ children }: { children: ReactNode }) => {
       navigate("/home");
       // window.location.reload();
     } catch (error) {
-      setError("Error while adding friend reload the page and try again");
+      document.body.style.overflow = "hidden";
+      let errorMessage;
+      if (error.data) {
+        errorMessage = error.data.message;
+      }
+      setError(error.reason || error.message || error.toString());
+
+      console.log(errorMessage);
     }
   };
 
@@ -223,6 +230,7 @@ export const ChatAppProvider = ({ children }: { children: ReactNode }) => {
       setLoading(false);
       // window.location.reload();
     } catch (error) {
+      document.body.style.overflowY = "hidden";
       setError("Error while sending message reload the page and try again");
     }
   };
