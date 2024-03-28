@@ -29,7 +29,8 @@
 }
 
 .button__text {
-  font-family: var(--subtitle-font);
+  font-family: var(--secondary-font);
+  font-size: var(--font-size-xhuge);
   font-weight: 900;
 }
 

@@ -24,19 +24,21 @@
 }
 .auth-wrapper {
   display: flex;
+  /* height: auto; */
+  /* height: 80vh; */
 }
 
 .auth-left {
   width: 50%;
-  height: 100vh;
-  display: flex;
+  height: 85vh;
+    display: flex;
   align-items: center;
 }
 
 .auth-right {
   width: 50%;
   margin-left: 10rem;
-  height: 100vh;
+  height: 85vh;
   display: flex;
   align-items: flex-start;
   justify-content: center;

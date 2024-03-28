@@ -10,17 +10,19 @@ const Auth = () => {
     useContext(ChatAppContext);
   return (
     <>
-      <UserCraft
-        image="auth-1.svg"
-        title="WELCOME TO  "
-        mainTitle="SECURE CHAT"
-        placeholder1="ENTER YOUR NAME"
-        placeholder2=""
-        icon1="user.svg"
-        icon2="key.svg"
-        buttonText="SUBMIT"
-        onButtonClick={createAccount}
-      />
+      <div className="real-auth-wrapper">
+        <UserCraft
+          image="auth-1.svg"
+          title="WELCOME TO  "
+          mainTitle="SECURE CHAT"
+          placeholder1="ENTER YOUR NAME"
+          placeholder2=""
+          icon1="user.svg"
+          icon2="key.svg"
+          buttonText="SUBMIT"
+          onButtonClick={createAccount}
+        />
+      </div>
     </>
   );
 };
