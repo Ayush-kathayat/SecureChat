@@ -6,5 +6,6 @@ import Loader from "./loader/loader";
 import Modal from "./modal/modal";
 import UserCard from "./userCard/userCard"; 
 import Button from "./button/button";
+import UserCraft from "./userCraft/userCraft";
 
-export { Nav, Error, Friend, Filter, Loader, Modal, UserCard, Button }; 
+export { Nav, Error, Friend, Filter, Loader, Modal, UserCard, Button, UserCraft }; 
