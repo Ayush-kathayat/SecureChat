@@ -15,7 +15,8 @@ interface UserCraftProps {
   image: string;
   title: string;
   mainTitle: string;
-  placeholder: string;
+  placeholder1: string;
+  placeholder2: string;
   icon1: string;
   icon2: string;
   buttonText: string;
@@ -23,7 +24,7 @@ interface UserCraftProps {
 
 }
 
-const UserCraft = ({image, title, mainTitle, icon1, icon2, buttonText, onButtonClick, placeholder}: UserCraftProps) => {
+const UserCraft = ({image, title, mainTitle, icon1, icon2, buttonText, onButtonClick, placeholder1, placeholder2}: UserCraftProps) => {
   const [name, setName] = useState("");
   const [accountAddress, setAccountAddress] = useState("");
 
@@ -48,7 +49,7 @@ const UserCraft = ({image, title, mainTitle, icon1, icon2, buttonText, onButtonC
               type="text"
               className="username-input"
               spellCheck="false"
-              placeholder={placeholder}
+              placeholder={placeholder1}
               onChange={(event) => setName(event.target.value)}
             />
           </div>
@@ -59,7 +60,7 @@ const UserCraft = ({image, title, mainTitle, icon1, icon2, buttonText, onButtonC
               type="text"
               className="address-input"
               spellCheck="false"
-              placeholder={account || "Enter your address"}
+              placeholder={placeholder2 || account || "Enter your address"}
               onChange={(event) => setAccountAddress(event.target.value)}
             />
           </div>

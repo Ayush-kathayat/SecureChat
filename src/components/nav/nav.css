@@ -54,6 +54,8 @@
   transform: translateY(12px);
   overflow: hidden;
   cursor: pointer;
+  text-decoration: none;
+  color: var(--text);
 }
 
 .main-link:hover > .links__item {
@@ -205,4 +207,8 @@
   background-color: var(--secondary);
   transition: 0.5s ease-in-out;
   cursor: pointer;
+}
+
+.links__item.aktive{
+  color: var(--accent);
 }

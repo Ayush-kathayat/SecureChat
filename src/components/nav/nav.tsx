@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 import { useContext, useState, useCallback } from "react";
@@ -37,7 +37,14 @@ const Nav = () => {
         <ul className="links">
           <li className="links__item-wrapper">
             <div className="main-link">
-              <span className="links__item">HOME</span>
+              <NavLink
+                className={({ isActive }) =>
+                  isActive ? "links__item aktive" : "links__item"
+                }
+                to="/home"
+              >
+                HOME
+              </NavLink>
               <Link className="l2" to="/home">
                 HOME
               </Link>
@@ -45,7 +52,14 @@ const Nav = () => {
           </li>
           <li className="links__item-wrapper">
             <div className="main-link">
-              <span className="links__item">USER</span>
+              <NavLink
+                className={({ isActive }) =>
+                  isActive ? "links__item aktive" : "links__item"
+                }
+                to="/users"
+              >
+                USER
+              </NavLink>
               <Link className="l2" to="/users">
                 USER
               </Link>
@@ -53,7 +67,14 @@ const Nav = () => {
           </li>
           <li className="links__item-wrapper">
             <div className="main-link">
-              <span className="links__item">CONFIG</span>
+              <NavLink
+                className={({ isActive }) =>
+                  isActive ? "links__item aktive" : "links__item"
+                }
+                to="/settings"
+              >
+                CONFIG
+              </NavLink>
               <Link className="l2" to="/settings">
                 CONFIG
               </Link>
@@ -61,7 +82,14 @@ const Nav = () => {
           </li>
           <li className="links__item-wrapper">
             <div className="main-link">
-              <span className="links__item">ABOUT</span>
+              <NavLink
+                className={({ isActive }) =>
+                  isActive ? "links__item aktive" : "links__item"
+                }
+                to="/about"
+              >
+                ABOUT
+              </NavLink>
               <Link className="l2" to="/about">
                 ABOUT
               </Link>
@@ -76,7 +104,7 @@ const Nav = () => {
             <Button text="Connect Wallet" onClick={connectWalletOnClick} />
           ) : (
             <Button
-              text={ username || "Create Account"}
+              text={username || "Create Account"}
               onClick={() => {
                 navigate("/");
               }}
